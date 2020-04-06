@@ -33,7 +33,7 @@
     },
   };
 
-  /*const classNames = {
+  const classNames = {
     menuProduct: {
       wrapperActive: 'active',
       imageVisible: 'active',
@@ -46,7 +46,7 @@
       defaultMin: 1,
       defaultMax: 9,
     }
-  };*/
+  };
 
   const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
@@ -120,14 +120,14 @@
     }
     initOrderForm() {
       const thisProduct = this;
-      thisProduct.form.addEventListener('submit', function(event){
+      thisProduct.form.addEventListener('submit', function(event) {
         event.preventDefault();
         thisProduct.processOrder();
       });
       for(let input of thisProduct.formInputs) {
         input.addEventListener('change', function() {
           thisProduct.processOrder();
-        });
+        })
       }
       thisProduct.cartButton.addEventListener('click', function(event) {
         event.preventDefault();
@@ -136,25 +136,31 @@
     }
     processOrder() {
       const thisProduct = this;
-      //const formData = utils.serializeFormToObject(thisProduct.form);
+      const formData = utils.serializeFormToObject(thisProduct.form);
+      const params = thisProduct.data.params;
+      //console.log('formData:', formData);
       let price = thisProduct.data.price;
-      let params = thisProduct.data.params;
-      if(params) {
-        //console.log(params);
-        /*const params = thisProduct.params;*/
-        for(let param in params) {
-          //const options = param.options;
-          console.log(param.options);
-          /*for(let option in options)
-          {
-            console.log(option);
-            if(option.default == true && formData != 'checked') {
-              price -= option.price;
-            }
-          }*/
+      
+      for(let param in params) {
+        //console.log('params', params);
+        //console.log('param', param);
+        //console.log('params[param]', params[param]);
+        //console.log('params[param].options', params[param].options);
+        const options = params[param].options;
+        const formOptions = formData[param];
+        //console.log('options', options);
+        //console.log('formOptions', formOptions);
+        for(let option in options) {
+          const optionSelected = formData.hasOwnProperty(param) && formData[param].indexOf(option) > -1;
+          if(optionSelected && !options[option].default) {
+            //console.log(options[option].price);
+            price += options[option].price
+          } else if(!optionSelected && options[option].default) {
+            price -= options[option].price;
+          }
         }
       }
-      thisProduct.priceElem = price;
+      thisProduct.priceElem.innerHTML = price;
     }
   }
 
