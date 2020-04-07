@@ -56,7 +56,8 @@
     constructor(element) {
       const thisWidget = this;
       thisWidget.getElements(element);
-      thisWidget.initActions(); 
+      thisWidget.initActions();
+      thisWidget.value = settings.amountWidget[defaultValue];
       thisWidget.setValue(thisWidget.input.value);
     }
     getElements(element) {
@@ -77,7 +78,7 @@
         thisWidget.setValue(thisWidget.value - 1);
       });
       thisWidget.linkIncrease.addEventListener('click', function(event) {
-        event.preventDefault()
+        event.preventDefault();
         const value = parseInt(thisWidget.value + 1);
         thisWidget.setValue(value);
       });
@@ -85,12 +86,12 @@
     setValue(value) {
       const thisWidget = this;
       const newValue = parseInt(value);
-      if(newValue > 0 && newValue < 10) {
+      if(newValue >= settings.amountWidget[defaultMin] && newValue <= settings.amountWidget[defaultMax]) {
         thisWidget.value = newValue;
-      } else if(newValue >= 10) {
-        thisWidget.value = 9;
-      } else if(newValue <= 0) {
-        thisWidget.value = 1;
+      } else if(newValue > settings.amountWidget[defaultMax]) {
+        thisWidget.value = settings.amountWidget[defaultMax];
+      } else if(newValue < settings.amountWidget[defaultMin]) {
+        thisWidget.value = settings.amountWidget[defaultMin];
       }
       thisWidget.announce();
       thisWidget.input.value = thisWidget.value;
@@ -180,7 +181,7 @@
       for(let input of thisProduct.formInputs) {
         input.addEventListener('change', function() {
           thisProduct.processOrder();
-        })
+        });
       }
       thisProduct.cartButton.addEventListener('click', function(event) {
         event.preventDefault();
@@ -198,7 +199,7 @@
         for(let option in options) {
           const optionSelected = formData.hasOwnProperty(param) && formData[param].indexOf(option) > -1;
           if(optionSelected && !options[option].default) {
-            price += options[option].price
+            price += options[option].price;
           } else if(!optionSelected && options[option].default) {
             price -= options[option].price;
           }
@@ -220,7 +221,7 @@
     }
     initAmountWidget() {
       const thisProduct = this;
-      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem)
+      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
       thisProduct.amountWidgetElem.addEventListener('updated', function() {
         thisProduct.processOrder();
       });
