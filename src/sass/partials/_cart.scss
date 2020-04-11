@@ -15,6 +15,11 @@
     transition: $transition;
   }
 
+  &.change {
+    opacity: .5;
+    transition: $transition;
+  }
+
   &.active {
     .cart__content {
       

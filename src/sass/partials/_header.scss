@@ -2,14 +2,22 @@
   padding: ($base-size * 5) 0;
   background: $color-dark;
   color: $color-light;
+  transition: $transition;
 
   &__wrapper {
     position: relative;
   }
-
+  &.sticky {
+    z-index: 100;
+    width: 100%;
+    position: fixed;
+    padding: ($base-size * 2) 0;
+    transition: $transition;
+  }
 }
 
 .logo {
+  color: $color-light;
   display: inline-block;
   line-height: 1;
 

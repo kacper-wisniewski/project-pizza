@@ -11,6 +11,7 @@
     containerOf: {
       menu: '#product-list',
       cart: '#cart',
+      header: '.header',
     },
     all: {
       menuProducts: '#product-list > .product',
@@ -166,6 +167,12 @@
           elem.innerHTML = thisCart[key];
         }
       }
+
+      
+      thisCart.dom.wrapper.classList.add('change');
+      setTimeout(function() {
+        thisCart.dom.wrapper.classList.remove('change');
+      }, 300);
     }
     remove(cartProduct) {
       const thisCart = this;
@@ -283,7 +290,7 @@
         price: thisCartProduct.price,
         priceSingle: thisCartProduct.priceSingle,
         params: thisCartProduct.params,
-      }
+      };
 
       return productData;
     }
@@ -496,18 +503,16 @@
       const url = `${settings.db.url}/${settings.db.product}`;
       
       fetch(url)
-      .then(function(rawResponse) {
-        return rawResponse.json();
-      })
-      .then(function(parsedResponse) {
-        console.log('parsedResponse:', parsedResponse);
+        .then(function(rawResponse) {
+          return rawResponse.json();
+        })
+        .then(function(parsedResponse) {
+          console.log('parsedResponse:', parsedResponse);
 
-        /* save prasedResponse as thisApp.data.products */
-        thisApp.data.products = parsedResponse;
+          thisApp.data.products = parsedResponse;
 
-        /* execute initMenu method */
-        app.initMenu();
-      });
+          app.initMenu();
+        });
       console.log('thisApp.data', JSON.stringify(thisApp.data)); 
     },
     initCart: function(){
@@ -531,4 +536,18 @@
   
 
   app.init();
+
+  function headerStick() {
+    const header = document.querySelector(select.containerOf.header);
+    const stickScroll = header.offsetTop;
+    if(window.pageYOffset > stickScroll) {
+      header.classList.add('sticky');
+    } else {
+      header.classList.remove('sticky');
+    }
+  }
+
+  window.onscroll = function() {
+    headerStick();
+  }
 }
