@@ -10,13 +10,21 @@
   font-size: $base-size;
   box-shadow: 0 0 $base-size rgba(0, 0, 0, 0.2);
   z-index: 9999;
+  
+  .icon-down {
+    transition: $transition;
+  }
 
   &.active {
     .cart__content {
+      
       @include accordion-open();
       padding: ($base-size * 1.5) 0 0 0;
     }
 
+    .icon-down {
+      transform: rotate(180deg);
+    }
   }
 
   &__summary {
