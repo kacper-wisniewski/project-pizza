@@ -1,18 +1,15 @@
 .header {
-  padding: ($base-size * 5) 0;
+  padding: ($base-size * 2) 0;
+  z-index: 100;
+  width: 100%;
   background: $color-dark;
   color: $color-light;
   transition: $transition;
+  position: sticky;
+  top: 0;
 
   &__wrapper {
     position: relative;
-  }
-  &.sticky {
-    z-index: 100;
-    width: 100%;
-    position: fixed;
-    padding: ($base-size * 2) 0;
-    transition: $transition;
   }
 }
 
