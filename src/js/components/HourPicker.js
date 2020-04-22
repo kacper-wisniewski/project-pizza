@@ -7,21 +7,26 @@ class HourPicker extends BaseWidget {
     super(wrapper, settings.hours.open);
     const thisWidget = this;
     thisWidget.dom.input = thisWidget.dom.wrapper.querySelector(select.widgets.hourPicker.input);
-    thisWidget.dom.input = thisWidget.dom.wrapper.querySelector(select.widgets.hourPicker.output);
+    thisWidget.dom.output = thisWidget.dom.wrapper.querySelector(select.widgets.hourPicker.output);
     thisWidget.initPlugin();
+    thisWidget.dom.input.addEventListener('change', function() {
+      thisWidget.renderValue();
+    });
   }
   initPlugin() {
     const thisWidget = this;
+    console.log(thisWidget);
     rangeSlider.create(thisWidget.dom.input);
   }
   parseValue(value) {
-      return utils.numberToHour(value);
+    return utils.numberToHour(value);
   }
   isValid() {
-      return true;
+    return true;
   }
   renderValue() {
-      thisWidget.dom.output = thisWidget.value;
+    const thisWidget = this;
+    thisWidget.dom.output = thisWidget.value;
   }
 }
 export default HourPicker;
