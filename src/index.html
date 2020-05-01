@@ -21,6 +21,7 @@
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
+          <a href="#main">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
         </div>
@@ -62,6 +63,103 @@
   </header>
 
   <div id="pages">
+    <section id="main" class="main container">
+      <div class="main-buttons">
+        <div class="main-button">
+          <img src="images/home/navigation/pizza-1.jpg" alt="">
+          <div class="button-text">
+            <a href="#order">
+              <span>Order Online</span>
+              <span>Delicious food delivered to your door</span>
+            </a>
+          </div>
+        </div>
+        <div class="main-button">
+          <img src="images/home/navigation/pizza-2.jpg" alt="">
+          <div class="button-text">
+            <a href="#booking">
+              <span>Book a table</span>
+              <span>Book a table online</span>
+            </a>
+          </div>
+        </div>
+        <div class="hours-banner">
+          <h3>Opening Hours</h3>
+          <span>Tue-Sun, 12PM - 12AM</span>
+        </div>
+      </div>
+      <div class="reference-holder">
+        <div class="reference active">
+          <img src="images/home/gallery/pizza-3.jpg" alt="">
+          <div class="reference-text">
+            <h3>Amazin Service!</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel tincidunt dolor. Donec vestibulum, urna nec porttitor ultrices, lectus arcu condimentum arcu, et auctor urna diam eu lorem. Sed eu pretium dolor.</p>
+            <p class="author">- Kacper Wiśniewski</p>
+          </div>
+        </div>
+        <div class="reference">
+          <img src="images/home/gallery/pizza-4.jpg" alt="">
+          <div class="reference-text">
+            <h3>Amazin Service!</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel tincidunt dolor. Donec vestibulum, urna nec porttitor ultrices, lectus arcu condimentum arcu, et auctor urna diam eu lorem. Sed eu pretium dolor.</p>
+            <p class="author">- Kacper Wiśniewski</p>
+          </div>
+        </div>
+        <div class="reference">
+          <img src="images/home/gallery/pizza-5.jpg" alt="">
+          <div class="reference-text">
+            <h3>Amazin Service!</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel tincidunt dolor. Donec vestibulum, urna nec porttitor ultrices, lectus arcu condimentum arcu, et auctor urna diam eu lorem. Sed eu pretium dolor.</p>
+            <p class="author">- Kacper Wiśniewski</p>
+          </div>
+        </div>
+      </div>
+      <div class="gallery">
+        <div class="gallery-picture">
+          <img src="images/home/gallery/pizza-4.jpg" alt="">
+          <div class="gallery-more">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="=#"><i class="fas fa-share-alt"></i></a>
+          </div>
+        </div>
+        <div class="gallery-picture">
+          <img src="images/home/gallery/pizza-5.jpg" alt="">
+          <div class="gallery-more">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="=#"><i class="fas fa-share-alt"></i></a>
+          </div>
+        </div>
+        <div class="gallery-picture">
+          <img src="images/home/gallery/pizza-6.jpg" alt="">
+          <div class="gallery-more">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="=#"><i class="fas fa-share-alt"></i></a>
+          </div>
+        </div>
+        <div class="gallery-picture">
+          <img src="images/home/gallery/pizza-7.jpg" alt="">
+          <div class="gallery-more">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="=#"><i class="fas fa-share-alt"></i></a>
+          </div>
+        </div>
+        <div class="gallery-picture">
+          <img src="images/home/gallery/pizza-8.jpg" alt="">
+          <div class="gallery-more">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="=#"><i class="fas fa-share-alt"></i></a>
+          </div>
+        </div>
+        <div class="gallery-picture">
+          <img src="images/home/gallery/pizza-9.jpg" alt="">
+          <div class="gallery-more">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="=#"><i class="fas fa-share-alt"></i></a>
+          </div>
+        </div>
+      </div>
+      <span class="instagram-link"><a href="#">View more on instagram</a></span>
+    </section>
     <section id="order">
       <div id="product-list" class="product-list container"></div>
     </section>
@@ -128,8 +226,8 @@
           </div>
         </div>
         <div class="order-confirmation">
-          <input type="tel" name="phone" placeholder="Your phone">
-          <input type="text" name="address" placeholder="Your address">
+          <input type="tel" name="phone" placeholder="Your phone" class="phone">
+          <input type="text" name="address" placeholder="Your address" class="address">
           <button type="submit" class="btn-secondary">Book table</button>
         </div>
       </form>

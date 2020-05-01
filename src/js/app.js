@@ -9,6 +9,8 @@ const app = {
 
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
+    thisApp.mainLinks = document.querySelectorAll(select.main.links);
+
     const idFromHash = window.location.hash.replace('#/', '');
 
     let pageMatchingHash = false;
@@ -33,6 +35,23 @@ const app = {
     }
 
     for(let link of thisApp.navLinks) {
+      link.addEventListener('click', function(event) {
+        const clickedElement = this;
+        event.preventDefault();
+        
+        const pageId = clickedElement.getAttribute('href').replace('#', '');
+        
+        //const pageId = href.replace('#', '');
+        //console.log(pageId);
+        
+        thisApp.activatePage(pageId);
+
+        /* change URL hash */
+      
+        window.location.hash = `#/${pageId}`;
+      });
+    }
+    for(let link of thisApp.mainLinks) {
       link.addEventListener('click', function(event) {
         const clickedElement = this;
         event.preventDefault();

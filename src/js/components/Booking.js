@@ -164,6 +164,9 @@ class Booking {
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
     thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+    thisBooking.dom.phone = thisBooking.dom.wrapper.querySelector(select.booking.phone);
+    thisBooking.dom.address = thisBooking.dom.wrapper.querySelector(select.booking.address);
+
   }
   initWidgets() {
     const thisBooking = this;
@@ -225,7 +228,9 @@ class Booking {
           table: tableId,
           duration: thisBooking.hoursAmount.value,
           ppl: thisBooking.peopleAmount.value,
-          starters: [thisBooking.starters]
+          starters: thisBooking.starters,
+          phone: thisBooking.dom.phone.getAttribute('value'),
+          address: thisBooking.dom.address.getAttribute('value'),
         };
 
         console.log(bookingData);
@@ -277,7 +282,7 @@ class Booking {
 
     console.log(starters);
 
-    return starters
+    return starters;
   }
 }
 
