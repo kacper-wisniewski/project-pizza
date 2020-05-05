@@ -2,6 +2,7 @@ import {settings, select, classNames} from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
+import Reviews from './components/Reviews.js';
 
 const app = {
   initPages: function() {
@@ -132,6 +133,12 @@ const app = {
 
     thisApp.booking = new Booking(bookingElem);
   },
+  initReviews: function() {
+    const thisApp = this;
+    const reviewsElem = document.querySelector(select.containerOf.reviews);
+
+    thisApp.reviews = new Reviews(reviewsElem);
+  },
   init: function(){
     const thisApp = this;
     /*console.log('*** App starting ***');
@@ -144,6 +151,7 @@ const app = {
     thisApp.initData();
     thisApp.initCart();
     thisApp.initBooking();
+    thisApp.initReviews();
   }
 };
 

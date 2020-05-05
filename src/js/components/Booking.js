@@ -97,11 +97,11 @@ class Booking {
   }
   updateDOM() {
     const thisBooking = this;
-    console.log(thisBooking.peopleAmount.value);
-    console.log(thisBooking.hoursAmount.value);
+    //console.log(thisBooking.peopleAmount.value);
+    //console.log(thisBooking.hoursAmount.value);
     thisBooking.date = thisBooking.datePicker.value;
     thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
-    console.log(thisBooking.hour);
+    //console.log(thisBooking.hour);
     let allAvailable = false;
 
     if (
@@ -182,7 +182,7 @@ class Booking {
     const thisBooking = this;
     thisBooking.date = thisBooking.datePicker.value;
     thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
-    console.log(thisBooking.dom.tables);
+    //console.log(thisBooking.dom.tables);
     for(let table of thisBooking.dom.tables) {
       table.addEventListener('click', function(event) {
         event.preventDefault();
@@ -193,7 +193,7 @@ class Booking {
           thisBooking.tableId = tableId;
         }
         
-        console.log(thisBooking.tableId);
+        //console.log(thisBooking.tableId);
       });
       
     }
@@ -229,8 +229,8 @@ class Booking {
           duration: thisBooking.hoursAmount.value,
           ppl: thisBooking.peopleAmount.value,
           starters: thisBooking.starters,
-          phone: thisBooking.dom.phone.getAttribute('value'),
-          address: thisBooking.dom.address.getAttribute('value'),
+          phone: thisBooking.dom.phone.value,
+          address: thisBooking.dom.address.value,
         };
 
         console.log(bookingData);
@@ -280,7 +280,7 @@ class Booking {
       }
     }
 
-    console.log(starters);
+    //console.log(starters);
 
     return starters;
   }
